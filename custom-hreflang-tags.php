@@ -6,6 +6,11 @@ Version: 1.0
 Author: Lucy King
 */
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
+
+
 // Add meta box
 add_action('add_meta_boxes', 'hreflang_add_meta_box');
 function hreflang_add_meta_box() {
@@ -40,7 +45,7 @@ function hreflang_meta_box_callback($post) {
     echo '</table>';
 
     // Button to add more fields
-    echo '<button type="button" id="addHreflangField" style="margin-top: 10px;">Add More</button>';
+    echo '<button type="button" id="addHreflangField" style="margin-top: 10px;background: #2271b1;border: 1px solid #2271b1;color: #fff;padding-left:12px;padding-right:12px;padding-top:7px;padding-bottom:7px;border-radius:5px;">Add hreflang tag</button>';
 }
 
 
@@ -74,7 +79,7 @@ function hreflang_save_meta_box_data($post_id) {
     }
 }
 
-// Output hreflang tags in head
+// Output hreflang tags in head 
 add_action('wp_head', 'add_custom_hreflang_tags', 1);
 function add_custom_hreflang_tags() {
     if (is_singular()) {
@@ -86,5 +91,8 @@ function add_custom_hreflang_tags() {
         }
     }
 }
+
+
+
 
 
